@@ -2,14 +2,12 @@ on:
   push:
     branches:
       - main
-
 name: release-please
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2
+      - uses: google-github-actions/release-please-action@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
+          release-type: python
           package-name: release-please-action
