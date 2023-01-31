@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v1.0.0...v1.1.0) (2023-01-31)
+
+
+### Features
+
+* add new feature file ([2fffb4a](https://github.com/dpuka/demo-changelog-releaseplease/commit/2fffb4ade0e9aeef5940f41283478d58756a2973))
+
+
+### Bug Fixes
+
+* fix bug with new_file ([cf13ca8](https://github.com/dpuka/demo-changelog-releaseplease/commit/cf13ca8c69a121445cb2be47c6923eb7f97638d5))
+
 ## [1.0.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v0.2.0...v1.0.0) (2023-01-26)
 
 
