@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v1.1.0...v2.0.0) (2023-01-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* add breaking change ([#13](https://github.com/dpuka/demo-changelog-releaseplease/issues/13))
+
+### Features
+
+* add breaking change ([#13](https://github.com/dpuka/demo-changelog-releaseplease/issues/13)) ([8e18585](https://github.com/dpuka/demo-changelog-releaseplease/commit/8e185859d4e46ba8c349879c1914f1c9e5a2f7e4))
+
 ## [1.1.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v1.0.0...v1.1.0) (2023-01-31)
 
 
