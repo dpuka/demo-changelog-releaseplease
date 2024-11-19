@@ -8,17 +8,15 @@ on:
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
-
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
       - name: Set up GitHub CLI
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "gh auth login --with-token"
+        run: gh auth login --with-token
 
       - name: Check if a PR already exists
         id: check_pr
@@ -32,8 +30,6 @@ jobs:
           fi
 
       - name: Create or Update PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ "$PR_EXISTS" == "false" ]]; then
             echo "Creating a new pull request from ${{ github.ref }} to production..."
