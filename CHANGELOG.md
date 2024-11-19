@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.2.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.1.0...v2.2.0) (2024-11-19)
+
+
+### Features
+
+* 🎸 Adding new github action for sync PR ([#25](https://github.com/dpuka/demo-changelog-releaseplease/issues/25)) ([7f08c13](https://github.com/dpuka/demo-changelog-releaseplease/commit/7f08c130028b17e089b868f8336ae75ec0488101))
+
+
+### Bug Fixes
+
+* 🐛 adjust github action for sync ([#28](https://github.com/dpuka/demo-changelog-releaseplease/issues/28)) ([a7a4bec](https://github.com/dpuka/demo-changelog-releaseplease/commit/a7a4becc84aaca36ecdd370619d9159da7e27695))
+* 🐛 github actin fix auth ([#27](https://github.com/dpuka/demo-changelog-releaseplease/issues/27)) ([ef73e0f](https://github.com/dpuka/demo-changelog-releaseplease/commit/ef73e0f30d2f61590efa96d64002f25929b2db7c))
+* 🐛 github action fix ([#26](https://github.com/dpuka/demo-changelog-releaseplease/issues/26)) ([78ba102](https://github.com/dpuka/demo-changelog-releaseplease/commit/78ba102e5d5c72b53e7966e87519281b51de4808))
+* add explamation point ([#22](https://github.com/dpuka/demo-changelog-releaseplease/issues/22)) ([0db2a16](https://github.com/dpuka/demo-changelog-releaseplease/commit/0db2a160a6f09beed8751bc5556eb3786345d476))
+* add git add src/index.html ! x3 ([#24](https://github.com/dpuka/demo-changelog-releaseplease/issues/24)) ([1f24be9](https://github.com/dpuka/demo-changelog-releaseplease/commit/1f24be943110ab5726465cbe63113fbacdde2cb9))
+
 ## [2.1.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.0.0...v2.1.0) (2024-11-19)
 
 
