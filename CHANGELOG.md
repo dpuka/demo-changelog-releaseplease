@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.0.0...v2.1.0) (2024-11-19)
+
+
+### Features
+
+* add environment ([#21](https://github.com/dpuka/demo-changelog-releaseplease/issues/21)) ([85b68c6](https://github.com/dpuka/demo-changelog-releaseplease/commit/85b68c63ccea090f1200d188b4349d3cc323b500))
+
+
+### Bug Fixes
+
+* adjust release please action ([#17](https://github.com/dpuka/demo-changelog-releaseplease/issues/17)) ([6def5a1](https://github.com/dpuka/demo-changelog-releaseplease/commit/6def5a10f6f0da2bacfca759db93d6b57b93ee7c))
+* adjust upload-artifact version and remove old release ([#20](https://github.com/dpuka/demo-changelog-releaseplease/issues/20)) ([17e7eb5](https://github.com/dpuka/demo-changelog-releaseplease/commit/17e7eb51bc96ba77e75ebe0e5f46e3148ca6ce75))
+
 ## [2.0.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v1.1.0...v2.0.0) (2023-01-31)
 
 
