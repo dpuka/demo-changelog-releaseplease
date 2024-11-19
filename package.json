@@ -1,0 +1,22 @@
+{
+  "name": "demo-changelog-releaseplease",
+  "version": "1.0.0",
+  "description": "Testing releases and changelog automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpuka/demo-changelog-releaseplease.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpuka/demo-changelog-releaseplease/issues"
+  },
+  "homepage": "https://github.com/dpuka/demo-changelog-releaseplease#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
