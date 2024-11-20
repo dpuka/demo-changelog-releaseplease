@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.4...v2.4.5) (2024-11-20)
+
+
+### Bug Fixes
+
+* removing temp file ([66c50c7](https://github.com/dpuka/demo-changelog-releaseplease/commit/66c50c7eb02189f745d5de2679d5d01d6d7b4beb))
+
 ## [2.4.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.3...v2.4.4) (2024-11-20)
 
 
