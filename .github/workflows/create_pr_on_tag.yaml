@@ -20,10 +20,10 @@ jobs:
 
       # Create a pull request
       - name: Create a pull request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          base: staging
-          branch: development
-          title: Fast Forward Release ${{ env.TAG_NAME }} to Staging Environment
-          body: FILL IN HERE
-          draft: false
+        run: |
+          gh pr create \
+            --base staging \
+            --head development \
+            --title "Fast Forward Release ${TAG_NAME} to Staging Environment" \
+            --body "FILL IN HERE" \
+            --repo ${{ github.repository }} 
