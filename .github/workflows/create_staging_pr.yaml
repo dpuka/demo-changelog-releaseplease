@@ -23,7 +23,7 @@ jobs:
         run: |
           git fetch --tags
           git checkout ${{ env.TAG_NAME }}
-          TEMP_BRANCH="temp/${{ env.TAG_NAME }}"
+          TEMP_BRANCH="temp/staging/${{ env.TAG_NAME }}"
           git checkout -b $TEMP_BRANCH
           git push origin $TEMP_BRANCH
           echo "TEMP_BRANCH=$TEMP_BRANCH" >> $GITHUB_ENV
