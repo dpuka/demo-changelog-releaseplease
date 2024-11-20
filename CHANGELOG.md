@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.6...v2.5.0) (2024-11-20)
+
+
+### Features
+
+* add production pr creation ([5d2827b](https://github.com/dpuka/demo-changelog-releaseplease/commit/5d2827b73acade3e06e3a81de4ff19c1805fbaee))
+
 ## [2.4.6](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.5...v2.4.6) (2024-11-20)
 
 
