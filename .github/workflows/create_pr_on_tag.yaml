@@ -39,9 +39,3 @@ jobs:
             --title "Fast Forward Staging to ${TAG_NAME}" \
             --body "FILL IN HERE" \
             --repo ${{ github.repository }}
-
-      # Optional: Clean up the temporary branch
-      - name: Delete temporary branch
-        if: always()
-        run: |
-          git push origin --delete ${{ env.TEMP_BRANCH }}
