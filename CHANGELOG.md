@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.0...v2.4.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* fix action to use gh cli rather than action ([#37](https://github.com/dpuka/demo-changelog-releaseplease/issues/37)) ([8062cb6](https://github.com/dpuka/demo-changelog-releaseplease/commit/8062cb6ef43570c989f31086637279939fe0c4d5))
+
 ## [2.4.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.3.1...v2.4.0) (2024-11-20)
 
 
