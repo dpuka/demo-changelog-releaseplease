@@ -1,0 +1,50 @@
+name: Create Production FF Pull Request
+
+on:
+    push:
+        branches:
+        - staging
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Extract tag details
+      - name: Extract tag name
+        run: echo "TAG_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      # Create a temporary branch at the tag
+      - name: Create temporary branch
+        run: |
+          git fetch --tags
+
+          LATEST_COMMIT=$(git rev-parse staging)
+          TAG_AT_COMMIT=$(git tag --points-at $LATEST_COMMIT)
+          if [ -z "$TAG_AT_COMMIT" ]; then
+            echo "Error: No tag found pointing to the latest staging commit."
+            exit 1
+          fi
+          echo "TAG_AT_COMMIT=${TAG_AT_COMMIT}" >> $GITHUB_ENV
+
+          git checkout ${{ env.TAG_AT_COMMIT }}
+          TEMP_BRANCH="temp/${{ env.TAG_AT_COMMIT }}"
+          git checkout -b $TEMP_BRANCH
+          git push origin $TEMP_BRANCH
+          echo "TEMP_BRANCH=$TEMP_BRANCH" >> $GITHUB_ENV
+
+      # Create a pull request to fast-forward staging to the tag
+      - name: Create a pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base production \
+            --head ${{ env.TEMP_BRANCH }} \
+            --title "Fast Forward Production to ${TAG_NAME}" \
+            --body "FILL IN HERE" \
+            --repo ${{ github.repository }}
