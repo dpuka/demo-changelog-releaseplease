@@ -23,7 +23,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           base: staging
-          head: development
+          branch: development
           title: Fast Forward Release ${{ env.TAG_NAME }} to Staging Environment
           body: FILL IN HERE
           draft: false
