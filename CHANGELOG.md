@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.3.0...v2.3.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* removing excess file ([#33](https://github.com/dpuka/demo-changelog-releaseplease/issues/33)) ([a133460](https://github.com/dpuka/demo-changelog-releaseplease/commit/a13346000f91eb5e12f35ec7685f3dea426c694b))
+
 ## [2.3.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.2.0...v2.3.0) (2024-11-20)
 
 
