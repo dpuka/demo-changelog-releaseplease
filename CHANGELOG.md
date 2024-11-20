@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.2.0...v2.3.0) (2024-11-20)
+
+
+### Features
+
+* add new github action to create PR on tag creation ([#32](https://github.com/dpuka/demo-changelog-releaseplease/issues/32)) ([6ac3b8f](https://github.com/dpuka/demo-changelog-releaseplease/commit/6ac3b8ff301f864756424dacc40a2f66c11a65a6))
+* adding new feature file ([#30](https://github.com/dpuka/demo-changelog-releaseplease/issues/30)) ([13ee19e](https://github.com/dpuka/demo-changelog-releaseplease/commit/13ee19eab7b38e2bda3067a18fb6937469802157))
+
 ## [2.2.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.1.0...v2.2.0) (2024-11-19)
 
 
