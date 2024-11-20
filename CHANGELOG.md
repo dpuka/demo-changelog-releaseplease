@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.5.0...v2.5.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* fix bug with duplicate branch name ([#61](https://github.com/dpuka/demo-changelog-releaseplease/issues/61)) ([5cb50f0](https://github.com/dpuka/demo-changelog-releaseplease/commit/5cb50f048da054f6f15d049b6f67842a41c635a8))
+
 ## [2.5.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.6...v2.5.0) (2024-11-20)
 
 
