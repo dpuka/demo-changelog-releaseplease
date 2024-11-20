@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.2...v2.4.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* add test file to see if PR is auto updated ([#42](https://github.com/dpuka/demo-changelog-releaseplease/issues/42)) ([ad43965](https://github.com/dpuka/demo-changelog-releaseplease/commit/ad4396516bb2e18ecbfcb7998bf0d8c81dd7fe88))
+* change head of PR to tag instead of dev ([#44](https://github.com/dpuka/demo-changelog-releaseplease/issues/44)) ([da4cacf](https://github.com/dpuka/demo-changelog-releaseplease/commit/da4cacf5a6d53d51f1cbcc7e8e823ae9ee2b498f))
+
 ## [2.4.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.1...v2.4.2) (2024-11-20)
 
 
