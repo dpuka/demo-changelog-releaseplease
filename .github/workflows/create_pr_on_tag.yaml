@@ -18,14 +18,30 @@ jobs:
       - name: Extract tag name
         run: echo "TAG_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
 
-      # Create a pull request
+      # Create a temporary branch at the tag
+      - name: Create temporary branch
+        run: |
+          git fetch --tags
+          git checkout ${{ env.TAG_NAME }}
+          TEMP_BRANCH="temp/${{ env.TAG_NAME }}"
+          git checkout -b $TEMP_BRANCH
+          git push origin $TEMP_BRANCH
+          echo "TEMP_BRANCH=$TEMP_BRANCH" >> $GITHUB_ENV
+
+      # Create a pull request to fast-forward staging to the tag
       - name: Create a pull request
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
             --base staging \
-            --head ${{ env.TAG_NAME }} \
-            --title "Fast Forward Release ${TAG_NAME} to Staging Environment" \
+            --head ${{ env.TEMP_BRANCH }} \
+            --title "Fast Forward Staging to ${TAG_NAME}" \
             --body "FILL IN HERE" \
-            --repo ${{ github.repository }} 
+            --repo ${{ github.repository }}
+
+      # Optional: Clean up the temporary branch
+      - name: Delete temporary branch
+        if: always()
+        run: |
+          git push origin --delete ${{ env.TEMP_BRANCH }}
