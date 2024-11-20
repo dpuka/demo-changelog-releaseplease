@@ -1,9 +1,9 @@
 name: Create Production FF Pull Request
 
 on:
-    push:
-        branches:
-        - staging
+  push:
+    branches:
+      - staging
 
 jobs:
   create-pull-request:
@@ -32,7 +32,7 @@ jobs:
           echo "TAG_AT_COMMIT=${TAG_AT_COMMIT}" >> $GITHUB_ENV
 
           git checkout ${{ env.TAG_AT_COMMIT }}
-          TEMP_BRANCH="temp/${{ env.TAG_AT_COMMIT }}"
+          TEMP_BRANCH="temp/prod/${{ env.TAG_AT_COMMIT }}"
           git checkout -b $TEMP_BRANCH
           git push origin $TEMP_BRANCH
           echo "TEMP_BRANCH=$TEMP_BRANCH" >> $GITHUB_ENV
