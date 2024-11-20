@@ -42,11 +42,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Release Please Action
         uses: googleapis/release-please-action@v4
         with:
           release-type: node # Adjust to your project type (e.g., python, java, etc.)
-          #package-name: my-package # Optional
+          token: ${{ steps.generate-token.outputs.token }}
           #prerelease: ${{ github.ref == 'refs/heads/development' || github.ref == 'refs/heads/staging' }}
 
       - name: Download build artifacts
