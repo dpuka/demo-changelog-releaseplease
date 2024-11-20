@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.3...v2.4.4) (2024-11-20)
+
+
+### Bug Fixes
+
+* fix bug with creating pr to tag ([#45](https://github.com/dpuka/demo-changelog-releaseplease/issues/45)) ([498053e](https://github.com/dpuka/demo-changelog-releaseplease/commit/498053ed718733556b6eefbf97aaa58f1871749f))
+
 ## [2.4.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.2...v2.4.3) (2024-11-20)
 
 
