@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.6](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.5...v2.4.6) (2024-11-20)
+
+
+### Bug Fixes
+
+* add newtestfile ([1abeb88](https://github.com/dpuka/demo-changelog-releaseplease/commit/1abeb88bb95082113406b2613a3190d668652b50))
+
 ## [2.4.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.4...v2.4.5) (2024-11-20)
 
 
