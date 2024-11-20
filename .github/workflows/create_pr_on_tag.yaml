@@ -25,7 +25,7 @@ jobs:
         run: |
           gh pr create \
             --base staging \
-            --head development \
+            --head ${{ env.TAG_NAME }} \
             --title "Fast Forward Release ${TAG_NAME} to Staging Environment" \
             --body "FILL IN HERE" \
             --repo ${{ github.repository }} 
