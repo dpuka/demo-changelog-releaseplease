@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.1...v2.4.2) (2024-11-20)
+
+
+### Bug Fixes
+
+* add gh token to create pull request action ([#39](https://github.com/dpuka/demo-changelog-releaseplease/issues/39)) ([8cd1802](https://github.com/dpuka/demo-changelog-releaseplease/commit/8cd1802968e107ccf9da7096f41013abcb7e677b))
+
 ## [2.4.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.4.0...v2.4.1) (2024-11-20)
 
 
