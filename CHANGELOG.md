@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.3.1...v2.4.0) (2024-11-20)
+
+
+### Features
+
+* add github app for creating releases ([#35](https://github.com/dpuka/demo-changelog-releaseplease/issues/35)) ([17c36a2](https://github.com/dpuka/demo-changelog-releaseplease/commit/17c36a24cfe5ea8c2e5c70c3a3dfbd284ea7dbf8))
+
 ## [2.3.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.3.0...v2.3.1) (2024-11-20)
 
 
