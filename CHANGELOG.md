@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.5.1...v2.6.0) (2024-11-20)
+
+
+### Features
+
+* add fetching last tag on staging PR ([#64](https://github.com/dpuka/demo-changelog-releaseplease/issues/64)) ([742f65b](https://github.com/dpuka/demo-changelog-releaseplease/commit/742f65b5f3366488a455229fe24a2973dfe9fdc9))
+
 ## [2.5.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.5.0...v2.5.1) (2024-11-20)
 
 
