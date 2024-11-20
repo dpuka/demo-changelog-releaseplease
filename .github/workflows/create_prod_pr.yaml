@@ -22,14 +22,19 @@ jobs:
       - name: Create temporary branch
         run: |
           git fetch --tags
+          for COMMIT in $(git rev-list staging); do
+            TAG_AT_COMMIT=$(git tag --points-at $COMMIT)
+            if [ ! -z "$TAG_AT_COMMIT" ]; then
+              echo "Found tag $TAG_AT_COMMIT at commit $COMMIT"
+              echo "TAG_AT_COMMIT=${TAG_AT_COMMIT}" >> $GITHUB_ENV
+              break
+            fi
+          done
 
-          LATEST_COMMIT=$(git rev-parse staging)
-          TAG_AT_COMMIT=$(git tag --points-at $LATEST_COMMIT)
           if [ -z "$TAG_AT_COMMIT" ]; then
-            echo "Error: No tag found pointing to the latest staging commit."
+            echo "Error: No tag found in the commit history of staging."
             exit 1
           fi
-          echo "TAG_AT_COMMIT=${TAG_AT_COMMIT}" >> $GITHUB_ENV
 
           git checkout ${{ env.TAG_AT_COMMIT }}
           TEMP_BRANCH="temp/prod/${{ env.TAG_AT_COMMIT }}"
