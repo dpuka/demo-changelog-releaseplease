@@ -1,19 +1,20 @@
-name: Fast-Forward Merge
+name: Validate Fast-Forward Merge
 
 on:
   issue_comment:
     types: [created]
 
 jobs:
-  fast_forward_merge:
-    if: startsWith(github.event.comment.body, '/ff')
+  validate_ff:
+    # Run only if the comment is on a pull request and starts with /ff
+    if: github.event.issue.pull_request != null && startsWith(github.event.comment.body, '/ff')
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Ensure we have the full history for merging
+          fetch-depth: 0
 
       - name: Generate a token
         id: generate-token
@@ -22,35 +23,29 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Extract Branches with GitHub Script
-        uses: actions/github-script@v6
-        id: branches
-        with:
-          script: |
-            return {
-              base: context.payload.pull_request.base.ref,
-              head: context.payload.pull_request.head.ref
-            };
-
-      - name: Verify fast-forward possibility
-        env: 
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+      - name: Extract Branches
+        id: extract_branches
         run: |
           cat "$GITHUB_EVENT_PATH"
-          echo "BASE_BRANCH=${{ steps.branches.outputs.base }}" >> $GITHUB_ENV
-          echo "HEAD_BRANCH=${{ steps.branches.outputs.head }}" >> $GITHUB_ENV
-          git fetch origin $BASE_BRANCH
-          git fetch origin $HEAD_BRANCH
+          BASE_BRANCH=$(jq -r .issue.pull_request.base.ref < "$GITHUB_EVENT_PATH")
+          HEAD_BRANCH=$(jq -r .issue.pull_request.head.ref < "$GITHUB_EVENT_PATH")
+          echo "BASE_BRANCH=$BASE_BRANCH" >> $GITHUB_ENV
+          echo "HEAD_BRANCH=$HEAD_BRANCH" >> $GITHUB_ENV
 
-          # Check if fast-forward is possible
+      - name: Debug Branches
+        run: |
+          echo "Base branch: $BASE_BRANCH"
+          echo "Head branch: $HEAD_BRANCH"
+
+      - name: Check Fast-Forward Merge Possibility
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          git fetch --token $GITHUB_TOKEN origin $BASE_BRANCH
+          git fetch --token $GITHUB_TOKEN origin $HEAD_BRANCH
           git checkout $BASE_BRANCH
           if git merge-base --is-ancestor origin/$HEAD_BRANCH origin/$BASE_BRANCH; then
             echo "Fast-forward merge possible."
           else
-            echo "Fast-forward merge is not possible. Update the branch first." && exit 1
+            echo "Fast-forward merge is not possible." && exit 1
           fi
-
-      - name: Perform fast-forward merge
-        run: |
-          git merge --ff-only origin/$HEAD_BRANCH
-          git push origin $BASE_BRANCH
