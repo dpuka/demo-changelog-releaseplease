@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.6.0...v2.6.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* remove exclamation points ([#69](https://github.com/dpuka/demo-changelog-releaseplease/issues/69)) ([7928e14](https://github.com/dpuka/demo-changelog-releaseplease/commit/7928e141ba3d79847487a8b774c712a61a52377c))
+
 ## [2.6.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.5.1...v2.6.0) (2024-11-20)
 
 
