@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.1...v2.7.2) (2024-11-21)
+
+
+### Bug Fixes
+
+* adjust logic for ff action ([#81](https://github.com/dpuka/demo-changelog-releaseplease/issues/81)) ([3f01b0f](https://github.com/dpuka/demo-changelog-releaseplease/commit/3f01b0f154cc763de8b2cb2b60583e5e37d30c91))
+
 ## [2.7.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.0...v2.7.1) (2024-11-21)
 
 
