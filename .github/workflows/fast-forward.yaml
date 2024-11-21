@@ -38,17 +38,12 @@ jobs:
           echo "Base branch: $BASE_BRANCH"
           echo "Head branch: $HEAD_BRANCH"
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Check Fast-Forward Merge Possibility
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          git fetch --token $GITHUB_TOKEN origin $BASE_BRANCH
-          git fetch --token $GITHUB_TOKEN origin $HEAD_BRANCH
+          git fetch origin $BASE_BRANCH
+          git fetch origin $HEAD_BRANCH
           git checkout $BASE_BRANCH
           if git merge-base --is-ancestor origin/$HEAD_BRANCH origin/$BASE_BRANCH; then
             echo "Fast-forward merge possible."
