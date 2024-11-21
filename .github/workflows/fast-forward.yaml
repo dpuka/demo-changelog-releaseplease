@@ -1,0 +1,45 @@
+name: Fast-Forward Merge
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  fast_forward_merge:
+    if: startsWith(github.event.comment.body, '/ff')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure we have the full history for merging
+
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Verify fast-forward possibility
+        env: 
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          BASE_BRANCH=$(jq -r .pull_request.base.ref <<< "$GITHUB_EVENT_PATH")
+          HEAD_BRANCH=$(jq -r .pull_request.head.ref <<< "$GITHUB_EVENT_PATH")
+          git fetch origin $BASE_BRANCH
+          git fetch origin $HEAD_BRANCH
+
+          # Check if fast-forward is possible
+          git checkout $BASE_BRANCH
+          if git merge-base --is-ancestor origin/$HEAD_BRANCH origin/$BASE_BRANCH; then
+            echo "Fast-forward merge possible."
+          else
+            echo "Fast-forward merge is not possible. Update the branch first." && exit 1
+          fi
+
+      - name: Perform fast-forward merge
+        run: |
+          git merge --ff-only origin/$HEAD_BRANCH
+          git push origin $BASE_BRANCH
