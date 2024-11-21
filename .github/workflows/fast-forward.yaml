@@ -23,19 +23,25 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Extract Branches
-        id: extract_branches
+      - name: Fetch PR Details
+        id: fetch-pr-details
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          cat "$GITHUB_EVENT_PATH"
-          BASE_BRANCH=$(jq -r .issue.pull_request.base.ref < "$GITHUB_EVENT_PATH")
-          HEAD_BRANCH=$(jq -r .issue.pull_request.head.ref < "$GITHUB_EVENT_PATH")
-          echo "BASE_BRANCH=$BASE_BRANCH" >> $GITHUB_ENV
-          echo "HEAD_BRANCH=$HEAD_BRANCH" >> $GITHUB_ENV
+          PR_URL=$(jq -r .issue.pull_request.url < "$GITHUB_EVENT_PATH")
+          PR_DATA=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" "$PR_URL")
+          echo "BASE_BRANCH=$(echo $PR_DATA | jq -r .base.ref)" >> $GITHUB_ENV
+          echo "HEAD_BRANCH=$(echo $PR_DATA | jq -r .head.ref)" >> $GITHUB_ENV
 
       - name: Debug Branches
         run: |
           echo "Base branch: $BASE_BRANCH"
           echo "Head branch: $HEAD_BRANCH"
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Check Fast-Forward Merge Possibility
         env:
