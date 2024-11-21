@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.0...v2.7.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* adjust ff action to use git branch ([#78](https://github.com/dpuka/demo-changelog-releaseplease/issues/78)) ([7ec34f1](https://github.com/dpuka/demo-changelog-releaseplease/commit/7ec34f14d6572d236a052e063cc38f697967ca04))
+
 ## [2.7.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.6.2...v2.7.0) (2024-11-21)
 
 
