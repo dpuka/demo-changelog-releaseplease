@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.9.0...v2.9.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* remove extra task and fixing links ([#108](https://github.com/dpuka/demo-changelog-releaseplease/issues/108)) ([bb6e0f6](https://github.com/dpuka/demo-changelog-releaseplease/commit/bb6e0f62cee548bbbea45178d54c4757417f6d6d))
+
 ## [2.9.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.2...v2.9.0) (2024-11-21)
 
 
