@@ -14,10 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Extract tag details
-      - name: Extract tag name
-        run: echo "TAG_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-
       # Create a temporary branch at the tag
       - name: Create temporary branch
         run: |
