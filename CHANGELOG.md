@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.6...v2.8.0) (2024-11-21)
+
+
+### Features
+
+* add body to staging release being created ([#96](https://github.com/dpuka/demo-changelog-releaseplease/issues/96)) ([36d8799](https://github.com/dpuka/demo-changelog-releaseplease/commit/36d8799fcd203ca13a9c7ac9daf626864571a0eb))
+
 ## [2.7.6](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.5...v2.7.6) (2024-11-21)
 
 
