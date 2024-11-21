@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.1...v2.8.2) (2024-11-21)
+
+
+### Bug Fixes
+
+* adjust pr body to breaks ([#101](https://github.com/dpuka/demo-changelog-releaseplease/issues/101)) ([c2f5133](https://github.com/dpuka/demo-changelog-releaseplease/commit/c2f51336250ac6138e810ef1a0e3727712c687b9))
+
 ## [2.8.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.0...v2.8.1) (2024-11-21)
 
 
