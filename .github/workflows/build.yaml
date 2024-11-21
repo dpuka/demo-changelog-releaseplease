@@ -61,12 +61,14 @@ jobs:
         with:
           name: build
 
-      - name: Upload Release Artifacts (Optional)
-        if: ${{ github.ref == 'refs/heads/production' }}
-        run: |
-          echo "Uploading release artifacts"
-          # For production releases, optionally upload build artifacts to a release on GitHub
-          gh release create "${{ github.ref_name }}" ./build --title "Release ${{ github.ref_name }}"
+      # - name: Upload Release Artifacts (Optional)
+      #   if: ${{ github.ref == 'refs/heads/production' }}
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #   run: |
+      #     echo "Uploading release artifacts"
+      #     # For production releases, optionally upload build artifacts to a release on GitHub
+      #     gh release create "${{ github.ref_name }}" ./build --title "Release ${{ github.ref_name }}"
 
   deploy:
     needs: [build, release]

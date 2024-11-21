@@ -43,10 +43,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PR_BODY="This pull request was automatically created based on a new tag **${TAG_NAME}**. "
-          PR_BODY+="This PR is to fast-forward the production branch to the **${TAG_NAME}**.<br/><br/>"
-          PR_BODY+="**NOTE**<br/>"
-          PR_BODY+="When merging this pull request, **DO NOT CLICK THE MERGE BUTTON ON THIS PULL REQUEST!**<br/><br/>"
+          PR_BODY="This pull request was automatically created based on "
+          PR_BODY="an update of staging to the tag **${TAG_AT_COMMIT}**."
+          PR_BODY+="This PR is to fast-forward the production branch to **${TAG_AT_COMMIT}**.<br/><br/>"
+          PR_BODY+="**NOTE:** When merging this pull request, "
+          PR_BODY+="**DO NOT CLICK THE MERGE BUTTON ON GITHUB!**<br/><br/>"
           PR_BODY+="When ready for release, please add a comment with the message: \`/ff\`. "
           PR_BODY+="This will fast forward the branch to the designated release.<br/><br/>"
           PR_BODY+="If you would like to skip this release, simply close the pull request. "
@@ -56,6 +57,6 @@ jobs:
           gh pr create \
             --base production \
             --head ${{ env.TEMP_BRANCH }} \
-            --title "Fast Forward Production to ${TAG_NAME}" \
+            --title "Fast Forward Production to ${TAG_AT_COMMIT}" \
             --body "$PR_BODY" \
             --repo ${{ github.repository }}
