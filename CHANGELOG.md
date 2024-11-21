@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.6.2...v2.7.0) (2024-11-21)
+
+
+### Features
+
+* add fast forward action ([#75](https://github.com/dpuka/demo-changelog-releaseplease/issues/75)) ([c0b9b1d](https://github.com/dpuka/demo-changelog-releaseplease/commit/c0b9b1d14d17a8c8b1c7298dccf96699fa4510c6))
+
 ## [2.6.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.6.1...v2.6.2) (2024-11-21)
 
 
