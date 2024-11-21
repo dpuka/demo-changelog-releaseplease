@@ -33,9 +33,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          PR_BODY="This pull request was automatically created based on a new tag **${TAG_NAME}**. "
+          PR_BODY+="This PR is to fast-forward the staging branch to the **${TAG_NAME}**.\n\n"
+          PR_BODY+="# NOTE\n"
+          PR_BODY+="When merging this pull request, **DO NOT CLICK THE MERGE BUTTON ON THIS PULL REQUEST!**\n\n"
+          PR_BODY+="When ready for release, please add a comment with the message: \`/ff\`. "
+          PR_BODY+="This will fast forward the branch to the designated release.\n\n"
+          PR_BODY+="If you would like to skip this release, simply close the pull request. "
+          PR_BODY+="You can delete the temporary branch as well when you close the PR.\n\n"
+          PR_BODY+="Thank you!\n"
+
           gh pr create \
             --base staging \
             --head ${{ env.TEMP_BRANCH }} \
             --title "Fast Forward Staging to ${TAG_NAME}" \
-            --body "FILL IN HERE" \
+            --body $PR_BODY \
             --repo ${{ github.repository }}
