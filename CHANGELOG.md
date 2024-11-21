@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.6](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.5...v2.7.6) (2024-11-21)
+
+
+### Bug Fixes
+
+* adjust remote so ff uses token ([#93](https://github.com/dpuka/demo-changelog-releaseplease/issues/93)) ([1f5b3c5](https://github.com/dpuka/demo-changelog-releaseplease/commit/1f5b3c580cef284a5c5ad3bcfb73ac0757eb56b8))
+
 ## [2.7.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.4...v2.7.5) (2024-11-21)
 
 
