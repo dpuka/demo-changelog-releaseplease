@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.4...v2.7.5) (2024-11-21)
+
+
+### Bug Fixes
+
+* remove check for ff, just do ff ([#90](https://github.com/dpuka/demo-changelog-releaseplease/issues/90)) ([c329de8](https://github.com/dpuka/demo-changelog-releaseplease/commit/c329de8c2c82b20a937f738932c4d76ba33883c9))
+
 ## [2.7.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.3...v2.7.4) (2024-11-21)
 
 
