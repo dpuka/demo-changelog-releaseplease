@@ -32,8 +32,8 @@ jobs:
             exit 1
           fi
 
-          git checkout ${{ env.TAG_AT_COMMIT }}
-          TEMP_BRANCH="temp/prod/${{ env.TAG_AT_COMMIT }}"
+          git checkout $TAG_AT_COMMIT
+          TEMP_BRANCH="temp/prod/$TAG_AT_COMMIT"
           git checkout -b $TEMP_BRANCH
           git push origin $TEMP_BRANCH
           echo "TEMP_BRANCH=$TEMP_BRANCH" >> $GITHUB_ENV
@@ -43,9 +43,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          PR_BODY="This pull request was automatically created based on a new tag **${TAG_NAME}**. "
+          PR_BODY+="This PR is to fast-forward the production branch to the **${TAG_NAME}**.<br/><br/>"
+          PR_BODY+="**NOTE**<br/>"
+          PR_BODY+="When merging this pull request, **DO NOT CLICK THE MERGE BUTTON ON THIS PULL REQUEST!**<br/><br/>"
+          PR_BODY+="When ready for release, please add a comment with the message: \`/ff\`. "
+          PR_BODY+="This will fast forward the branch to the designated release.<br/><br/>"
+          PR_BODY+="If you would like to skip this release, simply close the pull request. "
+          PR_BODY+="You can delete the temporary branch as well when you close the PR.<br/><br/>"
+          PR_BODY+="Thank you!"
+
           gh pr create \
             --base production \
             --head ${{ env.TEMP_BRANCH }} \
             --title "Fast Forward Production to ${TAG_NAME}" \
-            --body "FILL IN HERE" \
+            --body "$PR_BODY" \
             --repo ${{ github.repository }}
