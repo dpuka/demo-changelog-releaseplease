@@ -45,8 +45,5 @@ jobs:
           git fetch origin $BASE_BRANCH
           git fetch origin $HEAD_BRANCH
           git checkout $BASE_BRANCH
-          if git merge-base --is-ancestor origin/$HEAD_BRANCH origin/$BASE_BRANCH; then
-            echo "Fast-forward merge possible."
-          else
-            echo "Fast-forward merge is not possible." && exit 1
-          fi
+          git merge --ff-only origin/$HEAD_BRANCH
+          git push origin $BASE_BRANCH
