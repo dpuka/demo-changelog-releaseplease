@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.2...v2.9.0) (2024-11-21)
+
+
+### Features
+
+* add pr body to production pr ([#104](https://github.com/dpuka/demo-changelog-releaseplease/issues/104)) ([211e6bb](https://github.com/dpuka/demo-changelog-releaseplease/commit/211e6bb40a6576225304e403c1c1ce01f0f05c68))
+
 ## [2.8.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.1...v2.8.2) (2024-11-21)
 
 
