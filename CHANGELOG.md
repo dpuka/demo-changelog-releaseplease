@@ -7,6 +7,7 @@
 
 * remove getting git tag as specific step in prod deployment ([#72](https://github.com/dpuka/demo-changelog-releaseplease/issues/72)) ([f12b640](https://github.com/dpuka/demo-changelog-releaseplease/commit/f12b640b37155eff0db8c423044524b8af973b7b))
 
+
 ## [2.6.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.6.0...v2.6.1) (2024-11-21)
 
 
