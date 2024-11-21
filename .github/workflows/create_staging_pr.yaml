@@ -35,7 +35,7 @@ jobs:
         run: |
           PR_BODY="This pull request was automatically created based on a new tag **${TAG_NAME}**. "
           PR_BODY+="This PR is to fast-forward the staging branch to the **${TAG_NAME}**.<br/><br/>"
-          PR_BODY+="# NOTE<br/>"
+          PR_BODY+="**NOTE**<br/>"
           PR_BODY+="When merging this pull request, **DO NOT CLICK THE MERGE BUTTON ON THIS PULL REQUEST!**<br/><br/>"
           PR_BODY+="When ready for release, please add a comment with the message: \`/ff\`. "
           PR_BODY+="This will fast forward the branch to the designated release.<br/><br/>"
