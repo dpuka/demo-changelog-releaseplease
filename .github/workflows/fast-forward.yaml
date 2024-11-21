@@ -22,12 +22,23 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
+      - name: Extract Branches with GitHub Script
+        uses: actions/github-script@v6
+        id: branches
+        with:
+          script: |
+            return {
+              base: context.payload.pull_request.base.ref,
+              head: context.payload.pull_request.head.ref
+            };
+
       - name: Verify fast-forward possibility
         env: 
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          BASE_BRANCH=$(jq -r .pull_request.base.ref <<< "$GITHUB_EVENT_PATH")
-          HEAD_BRANCH=$(jq -r .pull_request.head.ref <<< "$GITHUB_EVENT_PATH")
+          cat "$GITHUB_EVENT_PATH"
+          echo "BASE_BRANCH=${{ steps.branches.outputs.base }}" >> $GITHUB_ENV
+          echo "HEAD_BRANCH=${{ steps.branches.outputs.head }}" >> $GITHUB_ENV
           git fetch origin $BASE_BRANCH
           git fetch origin $HEAD_BRANCH
 
