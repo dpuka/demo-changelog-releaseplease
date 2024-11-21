@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.3...v2.7.4) (2024-11-21)
+
+
+### Bug Fixes
+
+* remove token from cli ([#87](https://github.com/dpuka/demo-changelog-releaseplease/issues/87)) ([67903e3](https://github.com/dpuka/demo-changelog-releaseplease/commit/67903e330f6417353dcafde3dacb24c3f9c0e6df))
+
 ## [2.7.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.2...v2.7.3) (2024-11-21)
 
 
