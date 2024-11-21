@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.8.0...v2.8.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* adjust pr create command ([#98](https://github.com/dpuka/demo-changelog-releaseplease/issues/98)) ([d517aca](https://github.com/dpuka/demo-changelog-releaseplease/commit/d517acabcfea53413786e7ed415502fb33b621aa))
+
 ## [2.8.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.7.6...v2.8.0) (2024-11-21)
 
 
