@@ -47,5 +47,5 @@ jobs:
             --base staging \
             --head ${{ env.TEMP_BRANCH }} \
             --title "Fast Forward Staging to ${TAG_NAME}" \
-            --body $PR_BODY \
+            --body "$PR_BODY" \
             --repo ${{ github.repository }}
