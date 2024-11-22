@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.2...v2.10.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust logic for ff ([#122](https://github.com/dpuka/demo-changelog-releaseplease/issues/122)) ([edb72a2](https://github.com/dpuka/demo-changelog-releaseplease/commit/edb72a2ac72008bce2fca7670c511f6da2150c68))
+
 ## [2.10.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.1...v2.10.2) (2024-11-22)
 
 
