@@ -48,12 +48,12 @@ jobs:
           git fetch origin $HEAD_BRANCH | tee -a $LOG_FILE
           
           echo "Attempting merge..." | tee -a $LOG_FILE
-          if ! git checkout $BASE_BRANCH | tee -a $LOG_FILE; then
-            echo "Checkout failed" | tee -a $LOG_FILE
-            MERGE_SUCCESS=false
-          elif ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
+          git checkout $BASE_BRANCH | tee -a $LOG_FILE
+          if ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
             echo "Merge failed" | tee -a $LOG_FILE
             MERGE_SUCCESS=false
+          else
+            echo "Merge successful" | tee -a $LOG_FILE
           fi
           
           if [ "$MERGE_SUCCESS" = "true" ]; then
@@ -61,11 +61,24 @@ jobs:
             if ! git push origin $BASE_BRANCH | tee -a $LOG_FILE; then
               echo "Push failed" | tee -a $LOG_FILE
               MERGE_SUCCESS=false
+            else
+              echo "Push successful" | tee -a $LOG_FILE
             fi
           fi
-          
-          echo "MERGE_SUCCESS=$MERGE_SUCCESS" >> $GITHUB_ENV
 
+          echo "Fetching branch hashes for verification..." | tee -a $LOG_FILE
+          BASE_HASH=$(git rev-parse origin/$BASE_BRANCH)
+          HEAD_HASH=$(git rev-parse origin/$HEAD_BRANCH)
+
+          if [ "$BASE_HASH" = "$HEAD_HASH" ]; then
+            echo "Branches are synchronized." | tee -a $LOG_FILE
+            MERGE_SUCCESS=true
+          else
+            echo "Branches are not synchronized." | tee -a $LOG_FILE
+            MERGE_SUCCESS=false
+          fi
+
+          echo "MERGE_SUCCESS=$MERGE_SUCCESS" >> $GITHUB_ENV
       - name: Comment on PR
         if: always()
         env:
