@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.0...v2.10.1) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust wording on PR bodies ([#116](https://github.com/dpuka/demo-changelog-releaseplease/issues/116)) ([2a06adf](https://github.com/dpuka/demo-changelog-releaseplease/commit/2a06adf93251a59a5b2d43f990adc41471f5a7b8))
+
 ## [2.10.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.9.1...v2.10.0) (2024-11-22)
 
 
