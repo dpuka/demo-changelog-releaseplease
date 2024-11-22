@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.9.1...v2.10.0) (2024-11-22)
+
+
+### Features
+
+* add adding a comment with ff results ([#112](https://github.com/dpuka/demo-changelog-releaseplease/issues/112)) ([a438e83](https://github.com/dpuka/demo-changelog-releaseplease/commit/a438e83e82d88feb8799b25c0d4f43dd4115f1b0))
+
 ## [2.9.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.9.0...v2.9.1) (2024-11-21)
 
 
