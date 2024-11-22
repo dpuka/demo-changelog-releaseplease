@@ -52,9 +52,8 @@ jobs:
       - name: Release Please Action
         uses: googleapis/release-please-action@v4
         with:
-          release-type: node # Adjust to your project type (e.g., python, java, etc.)
+          release-type: node
           token: ${{ steps.generate-token.outputs.token }}
-          #prerelease: ${{ github.ref == 'refs/heads/development' || github.ref == 'refs/heads/staging' }}
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
