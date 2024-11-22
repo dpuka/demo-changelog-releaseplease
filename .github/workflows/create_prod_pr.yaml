@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_BODY="This pull request was automatically created based on "
-          PR_BODY="an update of staging to the tag **${TAG_AT_COMMIT}**."
+          PR_BODY+="an update of staging to the tag **${TAG_AT_COMMIT}**."
           PR_BODY+="This PR is to fast-forward the production branch to **${TAG_AT_COMMIT}**.<br/><br/>"
           PR_BODY+="**NOTE:** When merging this pull request, "
           PR_BODY+="**DO NOT CLICK THE MERGE BUTTON ON GITHUB!**<br/><br/>"

@@ -33,14 +33,31 @@ jobs:
           PR_DATA=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" "$PR_URL")
           echo "BASE_BRANCH=$(echo $PR_DATA | jq -r .base.ref)" >> $GITHUB_ENV
           echo "HEAD_BRANCH=$(echo $PR_DATA | jq -r .head.ref)" >> $GITHUB_ENV
+          echo "PR_NUMBER=$(echo $PR_DATA | jq -r .number)" >> $GITHUB_ENV
 
-      - name: Check Fast-Forward Merge Possibility
+      - name: Perform Fast-Forward Merge
+        id: perform-merge
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
+          set -e
+          LOG_FILE=merge.log
           git fetch origin $BASE_BRANCH
           git fetch origin $HEAD_BRANCH
           git checkout $BASE_BRANCH
-          git merge --ff-only origin/$HEAD_BRANCH
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-          git push origin $BASE_BRANCH
+          git merge --ff-only origin/$HEAD_BRANCH | tee $LOG_FILE
+          git push origin $BASE_BRANCH | tee -a $LOG_FILE
+        continue-on-error: true
+
+      - name: Comment on PR
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          LOG=$(cat merge.log)
+          if [ ${{ steps.perform-merge.outcome }} == "success" ]; then
+            COMMENT="Performed Fast-Forward merge!"
+          else
+            COMMENT="Failed to perform Fast-Forward merge. Logs:\n\`\`\`\n$LOG\n\`\`\`"
+          fi
+          gh pr comment $PR_NUMBER --body "$COMMENT"
