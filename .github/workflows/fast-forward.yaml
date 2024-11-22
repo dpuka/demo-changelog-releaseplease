@@ -40,14 +40,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          set -e
           LOG_FILE=merge.log
-          git fetch origin $BASE_BRANCH
-          git fetch origin $HEAD_BRANCH
-          git checkout $BASE_BRANCH
-          git merge --ff-only origin/$HEAD_BRANCH | tee $LOG_FILE
-          git push origin $BASE_BRANCH | tee -a $LOG_FILE
-        continue-on-error: true
+          MERGE_SUCCESS=true
+          
+          echo "Fetching branches..." | tee $LOG_FILE
+          git fetch origin $BASE_BRANCH | tee -a $LOG_FILE
+          git fetch origin $HEAD_BRANCH | tee -a $LOG_FILE
+          
+          echo "Attempting merge..." | tee -a $LOG_FILE
+          if ! git checkout $BASE_BRANCH | tee -a $LOG_FILE || ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
+            MERGE_SUCCESS=false
+          fi
+          
+          echo "Attempting push..." | tee -a $LOG_FILE
+          if ! git push origin $BASE_BRANCH | tee -a $LOG_FILE; then
+            MERGE_SUCCESS=false
+          fi
+          
+          echo "MERGE_SUCCESS=$MERGE_SUCCESS" >> $GITHUB_ENV
 
       - name: Comment on PR
         if: always()
@@ -55,7 +65,7 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           LOG=$(cat merge.log)
-          if [ ${{ steps.perform-merge.outcome }} == "success" ]; then
+          if [ "$MERGE_SUCCESS" = "true" ]; then
             COMMENT="Performed Fast-Forward merge!"
           else
             COMMENT="Failed to perform Fast-Forward merge. Logs:\n\`\`\`\n$LOG\n\`\`\`"
