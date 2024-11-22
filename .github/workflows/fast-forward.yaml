@@ -48,13 +48,20 @@ jobs:
           git fetch origin $HEAD_BRANCH | tee -a $LOG_FILE
           
           echo "Attempting merge..." | tee -a $LOG_FILE
-          if ! git checkout $BASE_BRANCH | tee -a $LOG_FILE || ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
+          if ! git checkout $BASE_BRANCH | tee -a $LOG_FILE; then
+            echo "Checkout failed" | tee -a $LOG_FILE
+            MERGE_SUCCESS=false
+          elif ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
+            echo "Merge failed" | tee -a $LOG_FILE
             MERGE_SUCCESS=false
           fi
           
-          echo "Attempting push..." | tee -a $LOG_FILE
-          if ! git push origin $BASE_BRANCH | tee -a $LOG_FILE; then
-            MERGE_SUCCESS=false
+          if [ "$MERGE_SUCCESS" = "true" ]; then
+            echo "Attempting push..." | tee -a $LOG_FILE
+            if ! git push origin $BASE_BRANCH | tee -a $LOG_FILE; then
+              echo "Push failed" | tee -a $LOG_FILE
+              MERGE_SUCCESS=false
+            fi
           fi
           
           echo "MERGE_SUCCESS=$MERGE_SUCCESS" >> $GITHUB_ENV
