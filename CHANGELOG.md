@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.3...v2.10.4) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust git merge strategy ([#125](https://github.com/dpuka/demo-changelog-releaseplease/issues/125)) ([f944b91](https://github.com/dpuka/demo-changelog-releaseplease/commit/f944b91c41becf6afc534e33a8688fcdee326423))
+
 ## [2.10.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.2...v2.10.3) (2024-11-22)
 
 
