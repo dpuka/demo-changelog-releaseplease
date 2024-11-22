@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.1...v2.10.2) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust logic for commenting ([#119](https://github.com/dpuka/demo-changelog-releaseplease/issues/119)) ([863f78f](https://github.com/dpuka/demo-changelog-releaseplease/commit/863f78f6047f21c164c2ccec89d593657598bb32))
+
 ## [2.10.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.0...v2.10.1) (2024-11-22)
 
 
