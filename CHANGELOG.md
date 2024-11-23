@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.10.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.3...v2.10.4) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust git merge strategy ([#125](https://github.com/dpuka/demo-changelog-releaseplease/issues/125)) ([f944b91](https://github.com/dpuka/demo-changelog-releaseplease/commit/f944b91c41becf6afc534e33a8688fcdee326423))
+
+## [2.10.3](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.2...v2.10.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust logic for ff ([#122](https://github.com/dpuka/demo-changelog-releaseplease/issues/122)) ([edb72a2](https://github.com/dpuka/demo-changelog-releaseplease/commit/edb72a2ac72008bce2fca7670c511f6da2150c68))
+
+## [2.10.2](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.1...v2.10.2) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust logic for commenting ([#119](https://github.com/dpuka/demo-changelog-releaseplease/issues/119)) ([863f78f](https://github.com/dpuka/demo-changelog-releaseplease/commit/863f78f6047f21c164c2ccec89d593657598bb32))
+
+## [2.10.1](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.0...v2.10.1) (2024-11-22)
+
+
+### Bug Fixes
+
+* adjust wording on PR bodies ([#116](https://github.com/dpuka/demo-changelog-releaseplease/issues/116)) ([2a06adf](https://github.com/dpuka/demo-changelog-releaseplease/commit/2a06adf93251a59a5b2d43f990adc41471f5a7b8))
+
 ## [2.10.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.9.1...v2.10.0) (2024-11-22)
 
 
