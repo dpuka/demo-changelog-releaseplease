@@ -56,6 +56,15 @@ jobs:
             echo "MERGE_SUCCESS=false" >> $GITHUB_ENV
           fi
 
+      - name: Get Job Log URL for comment
+        uses: Tiryoh/gha-jobid-action@v1.4.0
+        id: jobs
+        with:
+          job_name: ${{ github.job }}
+
+      - name: Output Current Job Log URL
+        run: echo 
+
       - name: Comment on PR
         if: always()
         env:
@@ -63,14 +72,11 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           REPO: ${{ github.repository }}
         run: |
-          # Generate link to the workflow logs
-          LOG_URL="https://github.com/$REPO/actions/runs/$RUN_ID"
-
           # Compose comment message
           if [ "$MERGE_SUCCESS" = "true" ]; then
-            COMMENT="Performed Fast-Forward merge! [View logs]($LOG_URL)"
+            COMMENT="Performed Fast-Forward merge! [View logs](${{ steps.jobs.outputs.html_url }})"
           else
-            COMMENT="Failed to perform Fast-Forward merge. [View logs]($LOG_URL)"
+            COMMENT="Failed to perform Fast-Forward merge. [View logs](${{ steps.jobs.outputs.html_url }})"
           fi
 
           # Post comment on PR
