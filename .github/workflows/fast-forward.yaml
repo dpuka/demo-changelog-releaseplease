@@ -39,55 +39,39 @@ jobs:
         id: perform-merge
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-        run: |
-          LOG_FILE=merge.log
-          MERGE_SUCCESS=true
-          
-          echo "Fetching branches..." | tee $LOG_FILE
-          git fetch origin $BASE_BRANCH | tee -a $LOG_FILE
-          git fetch origin $HEAD_BRANCH | tee -a $LOG_FILE
-          
-          echo "Attempting merge..." | tee -a $LOG_FILE
-          git checkout $BASE_BRANCH | tee -a $LOG_FILE
-          if ! git merge --ff-only origin/$HEAD_BRANCH | tee -a $LOG_FILE; then
-            echo "Merge failed" | tee -a $LOG_FILE
-            MERGE_SUCCESS=false
-          else
-            echo "Merge successful" | tee -a $LOG_FILE
-          fi
-          
-          if [ "$MERGE_SUCCESS" = "true" ]; then
-            echo "Attempting push..." | tee -a $LOG_FILE
-            if ! git push origin $BASE_BRANCH | tee -a $LOG_FILE; then
-              echo "Push failed" | tee -a $LOG_FILE
-              MERGE_SUCCESS=false
-            else
-              echo "Push successful" | tee -a $LOG_FILE
-            fi
-          fi
+        run: |            
+          git fetch origin $BASE_BRANCH
+          git fetch origin $HEAD_BRANCH
+          git checkout $BASE_BRANCH
+          git merge --ff-only origin/$HEAD_BRANCH
+          git push origin $BASE_BRANCH
 
-          echo "Fetching branch hashes for verification..." | tee -a $LOG_FILE
+          echo "Fetching branch hashes for verification..."
           BASE_HASH=$(git rev-parse origin/$BASE_BRANCH)
           HEAD_HASH=$(git rev-parse origin/$HEAD_BRANCH)
 
           if [ "$BASE_HASH" = "$HEAD_HASH" ]; then
-            echo "Branches are synchronized." | tee -a $LOG_FILE
-            MERGE_SUCCESS=true
+            echo "MERGE_SUCCESS=true" >> $GITHUB_ENV
           else
-            echo "Branches are not synchronized." | tee -a $LOG_FILE
-            MERGE_SUCCESS=false
+            echo "MERGE_SUCCESS=false" >> $GITHUB_ENV
           fi
 
-          echo "MERGE_SUCCESS=$MERGE_SUCCESS" >> $GITHUB_ENV
       - name: Comment on PR
         if: always()
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
         run: |
-          LOG=$(cat merge.log)
+          # Generate link to the workflow logs
+          LOG_URL="https://github.com/$REPO/actions/runs/$RUN_ID"
+
+          # Compose comment message
           if [ "$MERGE_SUCCESS" = "true" ]; then
-            COMMENT="Performed Fast-Forward merge!"
+            COMMENT="Performed Fast-Forward merge! [View logs]($LOG_URL)"
           else
-            COMMENT="Failed to perform Fast-Forward merge. Logs:\n\`\`\`\n$LOG\n\`\`\`"
+            COMMENT="Failed to perform Fast-Forward merge. [View logs]($LOG_URL)"
           fi
+
+          # Post comment on PR
           gh pr comment $PR_NUMBER --body "$COMMENT"
