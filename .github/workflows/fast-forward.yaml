@@ -57,10 +57,9 @@ jobs:
           fi
 
       - name: Get Job Log URL for comment
-        uses: Tiryoh/gha-jobid-action@v0
+        uses: Tiryoh/gha-jobid-action@v1.4.0
         id: jobs
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           job_name: ${{ github.job }}
 
       - name: Output Current Job Log URL
