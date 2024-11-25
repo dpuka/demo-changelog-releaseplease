@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.5...v2.11.0) (2024-11-25)
+
+
+### Features
+
+* add emojis to comments ([#135](https://github.com/dpuka/demo-changelog-releaseplease/issues/135)) ([c955a2e](https://github.com/dpuka/demo-changelog-releaseplease/commit/c955a2eb4f9d8b9cf31181ab40e8b339cd4afdb5))
+
 ## [2.10.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.4...v2.10.5) (2024-11-25)
 
 
