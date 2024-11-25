@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.10.5](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.4...v2.10.5) (2024-11-25)
+
+
+### Bug Fixes
+
+* add always run for get job action ([#131](https://github.com/dpuka/demo-changelog-releaseplease/issues/131)) ([85dbfaf](https://github.com/dpuka/demo-changelog-releaseplease/commit/85dbfaf3276b442bab361e34cab44a794ccf5898))
+* adjust commenting strategy to link to logs ([#128](https://github.com/dpuka/demo-changelog-releaseplease/issues/128)) ([c8e7e65](https://github.com/dpuka/demo-changelog-releaseplease/commit/c8e7e655e2747e423fc591eb8197717cc229964f))
+* adjust fast forward log output ([#130](https://github.com/dpuka/demo-changelog-releaseplease/issues/130)) ([9862502](https://github.com/dpuka/demo-changelog-releaseplease/commit/98625029a0f8d582e962953fa436f55df10cbfe9))
+
 ## [2.10.4](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.3...v2.10.4) (2024-11-22)
 
 
