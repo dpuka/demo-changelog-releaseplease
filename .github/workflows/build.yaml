@@ -85,7 +85,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       APPLICATION_NAME: ${{ vars.APPLICATION_NAME }}
       DEPLOYMENT_GROUP: ${{ vars.DEPLOYMENT_GROUP }}
-      S3_BUCKET: ${{ vars.AWS_BUCKET_REGION }}
+      S3_BUCKET: ${{ vars.AWS_BUCKET_NAME }}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -95,8 +95,10 @@ jobs:
       - name: Deploy artifacts to AWS S3
         run: |
           ls -l
+          tar -czf build.tar.gz ./
+          echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
           aws s3 cp \
-          . s3://${{ vars.AWS_BUCKET_NAME }}/demo \
+          . s3://${{ vars.AWS_BUCKET_NAME }}/${{ env.S3_KEY }} \
           --recursive \
           --region ${{ vars.AWS_BUCKET_REGION }}
 
@@ -106,7 +108,6 @@ jobs:
           if [[ "${{ github.ref }}" == "refs/heads/development" ]]; then
             echo "Deploying to QA environment..."
             # Add deployment commands for development/QA
-            echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
 
             aws deploy create-deployment \
               --application-name ${APPLICATION_NAME} \
