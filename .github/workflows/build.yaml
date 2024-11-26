@@ -98,7 +98,8 @@ jobs:
           ls -l
           tar -czf build.tar.gz build/
           echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
-          aws s3 mv build.tar.gz s3://${{ vars.AWS_BUCKET_NAME }}/${{ env.S3_KEY }} \
+          echo "s3://${{ vars.AWS_BUCKET_NAME }}/${ S3_KEY }"
+          aws s3 mv build.tar.gz s3://${{ vars.AWS_BUCKET_NAME }}/${ S3_KEY } \
           --region ${{ vars.AWS_BUCKET_REGION }}
 
       - name: Deploy to target environment
@@ -112,7 +113,7 @@ jobs:
               --application-name ${APPLICATION_NAME} \
               --region ${{ vars.AWS_BUCKET_REGION }} \
               --deployment-group-name ${DEPLOYMENT_GROUP} \
-              --revision "{\"revisionType\":\"S3\",\"s3Location\":{\"bucket\":\"${S3_BUCKET}\",\"key\":\"${S3_KEY}\",\"bundleType\":\"tar\"}}" \
+              --revision "{\"revisionType\":\"S3\",\"s3Location\":{\"bucket\":\"${{ vars.AWS_BUCKET_NAME }}\",\"key\":\"${ S3_KEY }\",\"bundleType\":\"tar\"}}" \
               --query "deploymentId" \
               --output text
 
