@@ -91,11 +91,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
+          path: build
       
       - name: Deploy artifacts to AWS S3
         run: |
           ls -l
-          tar -czf build.tar.gz ./
+          tar -czf build.tar.gz build/
           echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
           aws s3 cp build.tar.gz s3://${{ vars.AWS_BUCKET_NAME }}/${{ env.S3_KEY }} \
           --region ${{ vars.AWS_BUCKET_REGION }}
