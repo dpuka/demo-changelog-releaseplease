@@ -28,7 +28,8 @@ jobs:
           echo "Building project"
           # Example for Node.js
           npm run build
-          tar -czf build.tar.gz build/ appspec.yml scripts/
+          cp -r scripts build/scripts
+          cp appspec.yml build 
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -110,7 +111,7 @@ jobs:
               --application-name ${APPLICATION_NAME} \
               --region ${{ vars.AWS_BUCKET_REGION }} \
               --deployment-group-name ${DEPLOYMENT_GROUP} \
-              --revision "{\"revisionType\":\"S3\",\"s3Location\":{\"bucket\":\"${S3_BUCKET}\",\"key\":\"${S3_KEY}\",\"bundleType\":\"tar\"}}" \
+              --revision "{\"revisionType\":\"S3\",\"s3Location\":{\"bucket\":\"${S3_BUCKET}\",\"key\":\"${S3_KEY}\",\"bundleType\":\"zip\"}}" \
               --query "deploymentId" \
               --output text
 
