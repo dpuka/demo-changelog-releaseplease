@@ -28,6 +28,7 @@ jobs:
           echo "Building project"
           # Example for Node.js
           npm run build
+          tar -czf build.tar.gz build/ appspec.yml scripts/
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -78,11 +79,24 @@ jobs:
         || github.ref_name == 'staging'    && 'staging'
         || github.ref_name == 'production' && 'production'
         }}
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      APPLICATION_NAME: ${{ vars.APPLICATION_NAME }}
+      DEPLOYMENT_GROUP: ${{ vars.DEPLOYMENT_GROUP }}
+      S3_BUCKET: ${{ vars.AWS_BUCKET_REGION }}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build
+      
+      - name: Deploy artifacts to AWS S3
+        run: |
+          aws s3 cp \
+          ./build s3://${{ vars.AWS_BUCKET_NAME }}/demo \
+          --recursive \
+          --region ${{ vars.AWS_BUCKET_REGION }}
 
       - name: Deploy to target environment
         run: |
@@ -90,6 +104,16 @@ jobs:
           if [[ "${{ github.ref }}" == "refs/heads/development" ]]; then
             echo "Deploying to QA environment..."
             # Add deployment commands for development/QA
+            echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
+
+            aws deploy create-deployment \
+              --application-name ${APPLICATION_NAME} \
+              --region ${{ vars.AWS_BUCKET_REGION }} \
+              --deployment-group-name ${DEPLOYMENT_GROUP} \
+              --revision "{\"revisionType\":\"S3\",\"s3Location\":{\"bucket\":\"${S3_BUCKET}\",\"key\":\"${S3_KEY}\",\"bundleType\":\"tar\"}}" \
+              --query "deploymentId" \
+              --output text
+
           elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
             echo "Deploying to Staging environment..."
             # Add deployment commands for staging
@@ -97,3 +121,11 @@ jobs:
             echo "Deploying to Production environment..."
             # Add deployment commands for production
           fi
+
+#
+#
+
+#
+#
+#
+#

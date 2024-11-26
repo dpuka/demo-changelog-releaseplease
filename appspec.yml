@@ -1,0 +1,33 @@
+version: 0.0
+os: linux
+files:
+  - source: / # Source of files, in relation to where appspec.yml is located
+    destination: /home/admin/testing # Destination to copy files
+# permissions: # a separate section for post-processing adjusting of permissions on files
+hooks:
+  ApplicationStart:
+    - location: scripts/start_server.sh
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+
+# EC2 order
+# ---------
+# ApplicationStop
+      # gracefully stop the application or remove currently installed packages in preparation for a deployment.
+# (DownloadBundle *not usable)
+# BeforeInstall 
+      # preinstall tasks, such as decrypting files and creating a backup of the current version.
+# (Install *not usable)
+# AfterInstall
+      #  tasks such as configuring your application or changing file permissions.
+# ApplicationStart
+      # restart services that were stopped during ApplicationStop.
+# ValidateService
+      # verify the deployment was completed successfully.
+
+# Lambda order
+# ------------
+# BeforeAllowTraffic – Use to run tasks before traffic is shifted to the deployed Lambda function version.
+# AfterAllowTraffic – Use to run tasks after all traffic is shifted to the deployed Lambda function version.
