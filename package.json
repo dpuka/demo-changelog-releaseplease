@@ -1,6 +1,6 @@
 {
   "name": "demo-changelog-releaseplease",
-  "version": "2.11.0",
+  "version": "2.12.0",
   "description": "Testing releases and changelog automation",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
