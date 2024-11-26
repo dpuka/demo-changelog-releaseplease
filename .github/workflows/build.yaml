@@ -94,6 +94,7 @@ jobs:
       
       - name: Deploy artifacts to AWS S3
         run: |
+          ls -l
           aws s3 cp \
           ./build s3://${{ vars.AWS_BUCKET_NAME }}/demo \
           --recursive \
