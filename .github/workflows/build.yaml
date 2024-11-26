@@ -97,7 +97,8 @@ jobs:
         run: |
           ls -l
           tar -czf build.tar.gz build/
-          echo "S3_KEY=builds/demo-changelog/build.tar.gz" >> $GITHUB_ENV
+          S3_KEY=builds/demo-changelog/build.tar.gz
+          echo "S3_KEY=${S3_KEY}" >> $GITHUB_ENV
           echo $S3_KEY
           echo "s3://${{ vars.AWS_BUCKET_NAME }}/${S3_KEY}"
           
