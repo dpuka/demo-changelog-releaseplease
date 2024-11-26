@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: / # Source of files, in relation to where appspec.yml is located
-    destination: /home/admin/testing # Destination to copy files
+    destination: /home/admin/demo-changelog-releaseplease # Destination to copy files
 # permissions: # a separate section for post-processing adjusting of permissions on files
 hooks:
   ApplicationStart:
