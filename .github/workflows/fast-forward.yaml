@@ -70,12 +70,11 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           REPO: ${{ github.repository }}
         run: |
-          # Compose comment message
           if [ "$MERGE_SUCCESS" = "true" ]; then
-            COMMENT="Performed Fast-Forward merge! [View logs](${{ steps.jobs.outputs.html_url }})"
+            COMMENT=":white_check_mark: Performed Fast-Forward merge! :white_check_mark:"
           else
-            COMMENT="Failed to perform Fast-Forward merge. [View logs](${{ steps.jobs.outputs.html_url }})"
+            COMMENT=":x: Failed to perform Fast-Forward merge. :x:"
           fi
+          COMMENT+="</br></br>[View logs](${{ steps.jobs.outputs.html_url }})"
 
-          # Post comment on PR
           gh pr comment $PR_NUMBER --body "$COMMENT"
