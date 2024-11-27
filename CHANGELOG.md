@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.12.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.11.0...v2.12.0) (2024-11-26)
+
+
+### Features
+
+* attempting to add deployment ([#138](https://github.com/dpuka/demo-changelog-releaseplease/issues/138)) ([fb784a6](https://github.com/dpuka/demo-changelog-releaseplease/commit/fb784a6d8a9b2c7ae58b3091563fdc51db26f27d))
+
+
+### Bug Fixes
+
+* add debug logging ([#141](https://github.com/dpuka/demo-changelog-releaseplease/issues/141)) ([5e8baa3](https://github.com/dpuka/demo-changelog-releaseplease/commit/5e8baa33ae33d0396f0874b02ed5225222c0b2f6))
+* add exclamation point and change dirs ([#146](https://github.com/dpuka/demo-changelog-releaseplease/issues/146)) ([334dc69](https://github.com/dpuka/demo-changelog-releaseplease/commit/334dc69a1559dc7be168b38ab83314fc87c89207))
+* add logging ([#150](https://github.com/dpuka/demo-changelog-releaseplease/issues/150)) ([0f5828e](https://github.com/dpuka/demo-changelog-releaseplease/commit/0f5828e99035dd5b79167396f51128ddd5749a93))
+* adjust build ([#140](https://github.com/dpuka/demo-changelog-releaseplease/issues/140)) ([f5e71ac](https://github.com/dpuka/demo-changelog-releaseplease/commit/f5e71ace8936fb8b40d7e49a8f8a29b421b72a3a))
+* adjust deployment directories ([#144](https://github.com/dpuka/demo-changelog-releaseplease/issues/144)) ([5ffb112](https://github.com/dpuka/demo-changelog-releaseplease/commit/5ffb112f1dc35708031677448f6f1e9c8c2cd9e6))
+* adjust destination path for folders ([#145](https://github.com/dpuka/demo-changelog-releaseplease/issues/145)) ([11a98d6](https://github.com/dpuka/demo-changelog-releaseplease/commit/11a98d68739810961a8a7297497cbede245a97df))
+* adjust mv command + add logging ([#148](https://github.com/dpuka/demo-changelog-releaseplease/issues/148)) ([86ec8e5](https://github.com/dpuka/demo-changelog-releaseplease/commit/86ec8e59300cb831bdca514bede31546da343b1e))
+* adjust reployment steps with building ([#143](https://github.com/dpuka/demo-changelog-releaseplease/issues/143)) ([549d375](https://github.com/dpuka/demo-changelog-releaseplease/commit/549d37599653d95741b272df6bd844c228b94a28))
+* adjust s3 key naming ([#151](https://github.com/dpuka/demo-changelog-releaseplease/issues/151)) ([387e74a](https://github.com/dpuka/demo-changelog-releaseplease/commit/387e74aad5b43e0b9bd0e8a796499944f7b7868f))
+* change cp to mv ([#147](https://github.com/dpuka/demo-changelog-releaseplease/issues/147)) ([9d44fdb](https://github.com/dpuka/demo-changelog-releaseplease/commit/9d44fdb4959ecdaec81fe0cae98b98ad549b0276))
+* change directory of build script ([#142](https://github.com/dpuka/demo-changelog-releaseplease/issues/142)) ([4f638fc](https://github.com/dpuka/demo-changelog-releaseplease/commit/4f638fc9088dd8cc6e0cb6901d8a6541292db969))
+* modify paths ([#149](https://github.com/dpuka/demo-changelog-releaseplease/issues/149)) ([508b60e](https://github.com/dpuka/demo-changelog-releaseplease/commit/508b60ed8df1597b47dd30ad2d973115ea906b18))
+
 ## [2.11.0](https://github.com/dpuka/demo-changelog-releaseplease/compare/v2.10.5...v2.11.0) (2024-11-25)
 
 
